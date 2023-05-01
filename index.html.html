@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜拳游戏</title>
+    <style>
+      body{
+        text-align:center;
+        background-color:#c6e8db;
+      }
+      .user-select{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+      .user-select .item{
+        cursor:pointer;
+      }
+      .user-select .item:hover{
+        transform:scale(1.1);
+      }
+      .user-select .item:active{
+        transform:scale(1);
+      }
+      .user-select .item ~ .item{
+        margin-left:20px
+      }
+      #userResult{
+        display:none;
+      }
+      .retry-btn{
+        cursor:pointer;
+        transition:all .3s
+      }
+      .retry-btn:hover{
+        transform:rotate(90deg)
+      }
+    </style>
+</head>
+  <body>
+      <h1>猜拳游戏<h1>
+      <div>
+        <img id="sys" src="./q.png" alt="q">
+      </div>
+      <div id="userSelect">
+        <p>请选择您的出拳：</p>
+        <div class="user-select" onclick="handleClicked(event)">
+          <div class="item">
+            <img src="./scissor.png" alt="" data-type="0">
+          </div>
+          <div class="item">
+            <img src="./rock.png" alt="" data-type="1">
+          </div>
+          <div class="item">
+            <img src="./paper.png" alt="" data-type="2">
+          </div>
+        </div>
+      </div>
+      <div id="userResult">
+        <h2 id="userResultMsg"></h2>
+        <div>
+          <img id="userResultImg" src="./q.png" alt="q">
+        </div>
+        <p>
+          <img class="retry-btn" onclick="retry()" src="./retry.png" alt="">
+        </p>
+      </div>
+      <script>
+        const images=['scissor','rock','paper'];
+        function handleClicked(e) {
+          if(!e.target.dataset.type) return;
+          const userResult = +e.target.dataset.type;
+          const sysResult = Math.floor(3*Math.random());
+          let res = 0;
+          if (userResult === sysResult) res=0;
+          else if (sysResult - userResult === 1 || sysResult - userResult === -2) res = -1;
+          else res = 1;
+          document.getElementById('sys').src='./' + images[sysResult] + '.png';
+          document.getElementById('userSelect').style.display = 'none';
+          document.getElementById('userResult').style.display = 'block';
+          document.getElementById('userResultMsg').innerText = ['你输了！','平局！','你赢了！'][res + 1];
+          document.getElementById('userResultImg').src = './' + images[userResult] + '.png';
+          document.body.style.backgroundColor = ['#ddbeea','#e8f4bf','#e8c0c8'][res + 1];
+        }
+        function retry() {
+          document.getElementById('sys').src='./q.png';
+          document.getElementById('userSelect').style.display = 'block';
+          document.getElementById('userResult').style.display = 'none';
+          document.getElementById('userResultMsg').innerText = '';
+          document.getElementById('userResultImg').src = './q.png';
+          document.body.style.backgroundColor = '#c6e8db';
+        }
+      </script>
+  </body>
+</html>
