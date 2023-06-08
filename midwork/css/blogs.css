@@ -1,0 +1,58 @@
+/**
+*	Hendrix (HTML)
+*	Copyright © Hendrix by beshleyua. All Rights Reserved.
+**/
+
+/* TABLE OF CONTENTS
+	1. Blog
+*/
+
+/* 1. Blog */
+.section.started-blog {
+	height: 110px;
+	padding: 0;
+	background: #fdd912;
+}
+.section.started-blog .slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.section.blog-single {
+	padding: 100px 0;
+}
+.blog-items .blog-item {
+	margin-top: 25px;
+    margin-bottom: 25px;
+}
+.blog-items .blog-item .image {
+	margin: 0 0 25px 0;
+	font-size: 0;
+}
+.blog-items .blog-item .image img {
+	max-width: 100%;
+}
+.blog-items .blog-item .name {
+	display: block;
+	font-size: 19px;
+	line-height: 24px;
+	margin: 0 0 13px 0;
+	font-weight: 500;
+	color: #292929;
+}
+.blog-items .blog-item p {
+	margin: 0;
+	font-size: 14px;
+	line-height: 24px;
+}
+.blog-items .blog-item .date {
+	font-size: 12px;
+	font-weight: 400;
+	color: #b9b9b9;
+	margin-top: 20px;
+}
